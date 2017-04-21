@@ -1,0 +1,139 @@
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    background-color: #50d2e7;
+    margin: 0px;
+    padding: 0px;
+}
+
+body.about {
+    background-color: #fff;
+}
+
+@media (min-width: 550px)
+header {
+    width: 80%;
+}
+@media (min-width: 400px)
+header {
+    width: 85%;
+    padding: 0;
+}
+
+header {
+    position: relative;
+    transform: translateY(10%);
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+nav {
+    padding: 10px;
+    display: flex;
+    background-color: #50d2e7;
+}
+
+h1.logo {
+    text-align: center;
+    font-size: 3.5em;
+    font-family: 'Kaushan Script', cursive;
+    color: #174165;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+h1.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1.logo img {
+    position: relative;
+    top: 10px;
+    left: 5px;
+    height: 65px;
+}
+
+header h3 {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 2.4em;
+    text-align: center;
+    color: #fff;
+    width: 650px;
+    margin: 0 auto;
+}
+
+header p {
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+    color: #fafafa;
+    font-size: 1.6em;
+    line-height: 1.5em;
+    margin-bottom: 40px;
+}
+
+header .button {
+    font-family: 'PT Sans', sans-serif;
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    font-size: .8em;
+    border-radius:5px;
+    color: #fff;
+}
+
+header a.pcta {
+    background-color: #ff6932;
+    border: 1px solid #ff6932;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.question-input {
+    padding: 10px;
+    min-width: 300px;
+    width: 90%;
+}
+
+
+nav h1.logo {
+    text-align: left;
+    margin: 0px;
+    margin-right: 25px;
+    font-size: 2.5em;
+}
+
+nav h1.logo img {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    height: 40px;
+}
+
+nav form {
+    flex: 1;
+    display: flex;
+}
+
+nav input {
+    flex: 1;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+form .awesomplete {
+    flex: 1;
+    display: flex;
+}
+form .awesomplete ul{
+    margin-top: 60px;
+}
+
+form .awesomplete ul li{
+    font-size: 1.2em;
+}
