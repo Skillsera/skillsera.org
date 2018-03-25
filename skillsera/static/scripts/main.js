@@ -55,6 +55,7 @@ $(function() {
     Question.get(sid, function(q) {
       $('.answerbox').empty();
       $('.answerbox').append('<h2>' + q.question +'</h2><hr/>');
+      $('.answerbox').append('<p>This skill is needed for:</p>');
       $('.answerbox').append('<iframe width="560" height="315" src="' + q.answers[0].url.replace('watch?v=', 'embed/') + '" frameborder="0" allowfullscreen></iframe>');
     });
   }
@@ -149,8 +150,10 @@ $(function() {
   var seedId = Browser.getUrlParameter('id');
   if (seedId) {
     try {
+      AskComponent.render();
       Question.get(seedId, function(question) {
-        QuestionComponent.render(question)
+        QuestionIndexComponent.render(question)
+        load(seedId);
       });
     } catch(e) {
       console.log('id must be a valid integer Entity ID');
