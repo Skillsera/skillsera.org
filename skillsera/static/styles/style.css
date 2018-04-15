@@ -28,6 +28,10 @@ header {
     max-width: 800px;
 }
 
+h3 {
+    color: #174165;
+}
+
 nav {
     padding: 10px;
     display: flex;
@@ -56,11 +60,13 @@ h1.logo img {
 
 header h3 {
     font-family: 'PT Sans', sans-serif;
-    font-size: 2.4em;
+    font-size: 1.8em;
+    font-weight: normal;
     text-align: center;
     color: #fff;
-    width: 650px;
     margin: 0 auto;
+    line-height: 1.5em;
+    margin-bottom: 40px;
 }
 
 header p {
@@ -83,7 +89,7 @@ header .button {
     color: #fff;
 }
 
-header a.pcta {
+header .pcta {
     background-color: #ff6932;
     border: 1px solid #ff6932;
 }
@@ -121,9 +127,14 @@ nav form {
 nav input {
     flex: 1;
     border-radius: 5px;
-    border: 1px solid #fff;
+    border: 1px solid #17416588;
     padding: 10px;
     font-size: 1.5em;
+}
+
+nav input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #174165aa;
+    opacity: 1; /* Firefox */
 }
 
 form .awesomplete {
@@ -136,4 +147,8 @@ form .awesomplete ul{
 
 form .awesomplete ul li{
     font-size: 1.2em;
+}
+
+.hidden {
+    visibility: hidden;
 }

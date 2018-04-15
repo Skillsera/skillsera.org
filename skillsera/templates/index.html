@@ -9,10 +9,12 @@
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/scripts/awesomplete.min.js"></script>
         <script type="text/javascript" src="/static/scripts/api.js"></script>
         <script type="text/javascript" src="/static/scripts/main.js"></script>
         <link href='https://fonts.googleapis.com/css?family=PT+Sans|Kaushan+Script' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/static/styles/style.css">
+        <link rel="stylesheet" href="/static/styles/awesomplete.css">
         <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     </head>
     <body>
@@ -24,15 +26,20 @@
         
         <header>
           <h1 class="logo">Skillsera<img src="/static/imgs/fox.png"/></h1>
-          <h3>An open curriculum of the world's knowledge</h3>
-          <p>Skillsera unlocks the best scholarly explanations
-            buried deep within youtube videos and connects them into a
-            searchable curriculum.</p>
+          <h3>
+            A new type of encyclopedia which teaches skills by linking together bite-sized explanations from youtube videos.
+          </h3>
 
-          <p>
-            <a href="/learn" class="button pcta">Learn a skill</a>
-            <a href="/about" class="button">How it Works</a>
-          </p>
+          <form method="GET" action="/learn">
+            <nav>
+              <input type="text" name="q" id="searchBox" autofocus placeholder="Start with a question, like: What is matter?"/>
+            </nav>
+            <p>
+              <button type="submit" class="button pcta">Search</button>
+              <a href="/about" class="button">How it Works</a>
+            </p>
+          </form>
+
         </header>
 
         <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
