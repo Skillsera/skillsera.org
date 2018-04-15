@@ -168,14 +168,10 @@ $(function() {
     // when user presses enter to select
     var sid = $('.awesomplete ul li[aria-selected="true"]').attr('sid');
     if (e.which === 13) {
-      alert('?');
       if (sid) {
-        console.log(sid);
         return searchSubmit(sid);
       } else {
         getBestMatch($('#searchBox').val(), function(match) {
-          console.log($('#searchBox').val());
-          console.log(match.id);
           searchSubmit(match.id);
         });
       }
