@@ -20,7 +20,7 @@ Openness. Skillsera is not-for-profit. Its licenses support permissive open acce
 * Accessibility & Empowerment. Wikipedia supports multiple languages, accessible design, and rich semantic markup. Skillsera aspires to be inclusive of the underserved with its design, which is especially challenging given the high bandwidth of video.
 Persistence & Longevity. The web changes over time. Skillsera will rely on technologies like Internet Archive’s Wayback Machine and decentralized web protocols to promote persistence. We hope Skillsera is still useful in 20 years.
 * Simplicity & Focus. Wikipedia designs with purpose and tries to solve a single problem for editors and knowledge-seekers, respectively: a platform for organizing and consuming encyclopedia articles. There are many people who might envision more innovative interfaces. Skillsera aspires to solve the fundamental problem of unlocking and organizing as much video knowledge as possible and making it frictionless to navigate and consume. We’ll try to resist feature creep, like annotations, even though they might be helpful.
-* 
+
 ## Installation
 
 This project does not yet require installation. It uses plain old javascript and jquery to make calls to https://api.skillsera.org (the API server).
