@@ -10,6 +10,23 @@
   <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Kaushan+Script&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/htmx.org@2.0.3/dist/htmx.min.js"></script>
   <script src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+  <style>
+    nav { position: relative; }
+    /* nav search-as-you-type dropdown */
+    #search-results {
+      position: absolute; top: 100%; left: 0; right: 0; margin-top: 4px;
+      background: #fff; border: 1px solid #ddd; border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      max-height: 60vh; overflow-y: auto; z-index: 1000;
+    }
+    #search-results .search-results-list { list-style: none; margin: 0; padding: 4px; }
+    #search-results .search-results-list li a {
+      display: block; padding: 10px 14px; border-radius: 6px;
+      text-decoration: none; color: inherit;
+    }
+    #search-results .search-results-list li a:hover { background: #f2f2f2; }
+    #search-results .search-no-results { padding: 12px 14px; margin: 0; }
+  </style>
   {% block head %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
@@ -20,26 +37,53 @@
       <img src="/static/imgs/fox.png" alt="">Skillsera
     </a>
   </h1>
+  {% if request.url.path != '/' %}
   <form action="/learn" method="get"
         hx-get="/questions/search"
         hx-trigger="keyup changed delay:300ms"
         hx-target="#search-results"
         hx-indicator="#search-spinner"
-        hx-include="[name='q']">
+        hx-include="this">
     <input id="nav-search" name="q" type="text"
            placeholder="Search questions..."
            autocomplete="off"
            value="{{ request.query_params.get('q', '') }}">
   </form>
   <span id="search-spinner" class="htmx-indicator hidden">...</span>
+  <div id="search-results" style="display:none"></div>
+  {% endif %}
   <a href="/about" class="button" style="margin-left:10px;align-self:center">How it Works</a>
 </nav>
-
-<div id="search-results" style="position:relative;z-index:100;background:#fff;display:none"></div>
 
 {% block content %}{% endblock %}
 
 <script src="/static/js/player.js"></script>
+<script>
+  // Show a results container only when it has content; hide it when empty.
+  (function () {
+    function toggle(el) {
+      if (el) el.style.display = el.innerHTML.trim() ? 'block' : 'none';
+    }
+    document.body.addEventListener('htmx:afterSwap', function (e) {
+      var id = e.detail.target && e.detail.target.id;
+      if (id === 'search-results' || id === 'main-search-results') toggle(e.detail.target);
+    });
+    // Clearing the nav search closes its dropdown.
+    document.body.addEventListener('input', function (e) {
+      if (e.target && e.target.id === 'nav-search' && !e.target.value.trim()) {
+        var r = document.getElementById('search-results');
+        if (r) { r.innerHTML = ''; r.style.display = 'none'; }
+      }
+    });
+    // Clicking outside the nav dropdown closes it.
+    document.addEventListener('click', function (e) {
+      var r = document.getElementById('search-results');
+      if (r && !e.target.closest('#search-results') && e.target.id !== 'nav-search') {
+        r.style.display = 'none';
+      }
+    });
+  })();
+</script>
 {% block scripts %}{% endblock %}
 </body>
 </html>

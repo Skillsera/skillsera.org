@@ -13,7 +13,7 @@
         hx-trigger="keyup changed delay:300ms"
         hx-target="#main-search-results"
         hx-indicator="#main-spinner"
-        hx-include="[name='q']"
+        hx-include="this"
         style="display:flex;flex-direction:column;align-items:center;gap:10px">
     <input class="question-input" id="main-search" name="q" type="text"
            placeholder="Start with a question, like: What is matter?"
@@ -31,13 +31,8 @@
 
 {% block scripts %}
 <script>
-  // Show search results container when results arrive
-  document.body.addEventListener('htmx:afterSwap', function(e) {
-    if (e.detail.target.id === 'main-search-results') {
-      e.detail.target.style.display = 'block';
-    }
-  });
-  // Focus the main search on load
-  document.getElementById('main-search').focus();
+  // Focus the main search on load (reveal logic lives in base.html).
+  var ms = document.getElementById('main-search');
+  if (ms) ms.focus();
 </script>
 {% endblock %}
