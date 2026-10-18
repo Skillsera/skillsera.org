@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql://skillsera:skillsera@localhost/skillsera"
     secret_key: str = "dev-secret-key-change-in-production"
     auth_server_url: str = "https://auth.skillsera.org"
-    cors_origins: list[str] = ["http://localhost:8000"]
+    cors_origins: str = "https://skillsera.org,https://api.skillsera.org"
     debug: bool = False
 
 

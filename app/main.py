@@ -12,7 +12,7 @@ app = FastAPI(title="Skillsera", docs_url="/api/docs" if settings.debug else Non
 app.add_middleware(SessionMiddleware, secret_key=settings.secret_key)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins,
+    allow_origins=[o.strip() for o in settings.cors_origins.split(',') if o.strip()],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
