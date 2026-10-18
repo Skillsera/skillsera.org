@@ -1,0 +1,58 @@
+<div class="question-card" id="question-{{ question.id }}">
+  <h2 class="question-title">{{ question.question }}</h2>
+
+  {% set answers = question.answers %}
+  {% if answers %}
+  <div class="answers-section">
+    <h3>Video Answers</h3>
+    <div class="answers-list" id="answers-list-{{ question.id }}"
+         x-data="videoPlayer()">
+      {% for answer in answers %}
+        {% if not answer.dark %}
+        <div class="answer-item" data-url="{{ answer.url }}"
+             data-start="{{ answer.start or '' }}"
+             data-stop="{{ answer.stop or '' }}">
+          <button class="answer-play-btn"
+                  @click="play('{{ answer.url }}', {{ answer.start or 'null' }}, {{ answer.stop or 'null' }})">
+            ▶ Play
+          </button>
+          <span class="answer-submitter">submitted by {{ answer.submitter }}</span>
+          {% if answer.start %}
+            <span class="answer-timestamp">{{ answer.start }}s</span>
+          {% endif %}
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      <div class="video-player-container" x-show="embedUrl" x-cloak>
+        <iframe :src="embedUrl" width="560" height="315"
+                frameborder="0" allowfullscreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+        </iframe>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <p class="no-answers">No video answers yet. Be the first to submit one!</p>
+  {% endif %}
+
+  {% include "partials/answer_form.html" %}
+
+  {% if question.children %}
+  <div class="related-questions">
+    <h3>Related Questions</h3>
+    <ul>
+      {% for child in question.children %}
+      <li>
+        <a href="/learn?id={{ child.id }}"
+           hx-get="/questions/{{ child.id }}"
+           hx-target="#question-container"
+           hx-push-url="/learn?id={{ child.id }}">
+          {{ child.question }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>

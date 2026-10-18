@@ -1,0 +1,19 @@
+{% if results %}
+<ul class="search-results-list">
+  {% for result in results %}
+  <li>
+    <a href="/learn?id={{ result.id }}"
+       hx-get="/questions/{{ result.id }}"
+       hx-target="#question-container"
+       hx-push-url="/learn?id={{ result.id }}">
+      {{ result.question }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% elif query %}
+<p class="search-no-results">
+  No questions found for "<strong>{{ query }}</strong>".
+  <a href="/learn?q={{ query }}">Be the first to ask it!</a>
+</p>
+{% endif %}

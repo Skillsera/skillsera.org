@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Skillsera{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="/static/imgs/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Kaushan+Script&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/htmx.org@2.0.3/dist/htmx.min.js"></script>
+  <script src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+  {% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+<nav>
+  <h1 class="logo">
+    <a href="/">
+      <img src="/static/imgs/fox.png" alt="">Skillsera
+    </a>
+  </h1>
+  <form action="/learn" method="get"
+        hx-get="/questions/search"
+        hx-trigger="keyup changed delay:300ms"
+        hx-target="#search-results"
+        hx-indicator="#search-spinner"
+        hx-include="[name='q']">
+    <input id="nav-search" name="q" type="text"
+           placeholder="Search questions..."
+           autocomplete="off"
+           value="{{ request.query_params.get('q', '') }}">
+  </form>
+  <span id="search-spinner" class="htmx-indicator hidden">...</span>
+  <a href="/about" class="button" style="margin-left:10px;align-self:center">How it Works</a>
+</nav>
+
+<div id="search-results" style="position:relative;z-index:100;background:#fff;display:none"></div>
+
+{% block content %}{% endblock %}
+
+<script src="/static/js/player.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

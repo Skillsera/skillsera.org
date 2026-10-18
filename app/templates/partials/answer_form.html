@@ -1,0 +1,27 @@
+<div class="answer-form-section" x-data="{ open: false }">
+  <button class="button" @click="open = !open" type="button">
+    <span x-text="open ? 'Cancel' : '+ Submit a Video Answer'">+ Submit a Video Answer</span>
+  </button>
+
+  <form x-show="open" x-cloak
+        hx-post="/answers"
+        hx-target="#answers-list-{{ question.id }}"
+        hx-swap="afterbegin"
+        @htmx:after-request="open = false"
+        style="margin-top:1em">
+    <input type="hidden" name="question_id" value="{{ question.id }}">
+    <input type="hidden" name="user_id" value="1">
+
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:500px">
+      <input name="url" type="url" placeholder="YouTube URL (e.g. https://youtube.com/watch?v=...)"
+             required style="padding:8px;border-radius:4px;border:1px solid #ccc">
+      <div style="display:flex;gap:8px">
+        <input name="start" type="number" placeholder="Start (seconds)" min="0"
+               style="flex:1;padding:8px;border-radius:4px;border:1px solid #ccc">
+        <input name="stop" type="number" placeholder="Stop (seconds)" min="0"
+               style="flex:1;padding:8px;border-radius:4px;border:1px solid #ccc">
+      </div>
+      <button type="submit" class="button pcta">Submit Answer</button>
+    </div>
+  </form>
+</div>

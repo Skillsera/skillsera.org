@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{% if question %}{{ question.question }} — Skillsera{% else %}Learn — Skillsera{% endif %}{% endblock %}
+
+{% block content %}
+<div class="main-content" id="app"
+     {% if question_id %}
+     hx-get="/questions/{{ question_id }}"
+     hx-trigger="load"
+     hx-target="#question-container"
+     {% endif %}>
+
+  <div id="question-container">
+    {% if question %}
+      {% include "partials/question_card.html" %}
+    {% else %}
+      <p>Search for a question above or <a href="/">go back to the homepage</a>.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

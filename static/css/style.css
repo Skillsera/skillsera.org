@@ -1,0 +1,272 @@
+/* ===== Base ===== */
+body {
+  font-family: 'PT Sans', sans-serif;
+  background-color: #50d2e7;
+  margin: 0;
+  padding: 0;
+}
+
+body.about {
+  background-color: #fff;
+}
+
+/* ===== Nav ===== */
+nav {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #50d2e7;
+}
+
+nav h1.logo {
+  text-align: left;
+  margin: 0 25px 0 0;
+  font-size: 2.5em;
+  font-family: 'Kaushan Script', cursive;
+  color: #174165;
+  text-shadow: 1px 1px 1px #fff;
+  white-space: nowrap;
+}
+
+nav h1.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav h1.logo img {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  height: 40px;
+}
+
+nav form {
+  flex: 1;
+  display: flex;
+}
+
+nav input {
+  flex: 1;
+  border-radius: 5px;
+  border: 1px solid #17416588;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+nav input::placeholder {
+  color: #174165aa;
+  opacity: 1;
+}
+
+/* ===== Header (landing page) ===== */
+@media (min-width: 550px) {
+  header { width: 80%; }
+}
+@media (min-width: 400px) {
+  header { width: 85%; padding: 0; }
+}
+
+header {
+  position: relative;
+  transform: translateY(10%);
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+h1.logo {
+  text-align: center;
+  font-size: 3.5em;
+  font-family: 'Kaushan Script', cursive;
+  color: #174165;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+h1.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1.logo img {
+  position: relative;
+  top: 10px;
+  left: 5px;
+  height: 65px;
+}
+
+header h3 {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.8em;
+  font-weight: normal;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto;
+  line-height: 1.5em;
+  margin-bottom: 40px;
+}
+
+header p {
+  font-family: 'PT Sans', sans-serif;
+  text-align: center;
+  color: #fafafa;
+  font-size: 1.6em;
+  line-height: 1.5em;
+  margin-bottom: 40px;
+}
+
+.question-input {
+  padding: 10px;
+  min-width: 300px;
+  width: 90%;
+  border-radius: 5px;
+  border: 1px solid #17416588;
+  font-size: 1.2em;
+}
+
+/* ===== Buttons ===== */
+.button {
+  font-family: 'PT Sans', sans-serif;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  font-size: .8em;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button.pcta {
+  background-color: #ff6932;
+  border: 1px solid #ff6932;
+}
+
+/* ===== Main content ===== */
+.main-content {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h2, h3 {
+  color: #174165;
+}
+
+/* ===== Search results ===== */
+.search-results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 600px;
+}
+
+.search-results-list li a {
+  display: block;
+  padding: 10px 14px;
+  color: #174165;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.search-results-list li a:hover {
+  background-color: #f0fafd;
+}
+
+.search-no-results {
+  color: #174165;
+  padding: 10px;
+}
+
+/* ===== Question card ===== */
+.question-card {
+  padding: 20px 0;
+}
+
+.question-title {
+  color: #174165;
+  font-size: 2em;
+}
+
+/* ===== Answers ===== */
+.answers-list {
+  margin: 10px 0;
+}
+
+.answer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.answer-play-btn {
+  background-color: #ff6932;
+  border: none;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.answer-play-btn:hover {
+  background-color: #e55820;
+}
+
+.answer-submitter {
+  color: #666;
+  font-size: 0.85em;
+}
+
+.answer-timestamp {
+  color: #999;
+  font-size: 0.8em;
+}
+
+.video-player-container {
+  margin: 16px 0;
+}
+
+.video-player-container iframe {
+  max-width: 100%;
+}
+
+/* ===== Answer form ===== */
+.answer-form-section {
+  margin-top: 24px;
+}
+
+/* ===== Related questions ===== */
+.related-questions ul {
+  padding-left: 20px;
+}
+
+.related-questions li {
+  margin: 6px 0;
+}
+
+.related-questions a {
+  color: #174165;
+}
+
+/* ===== Utilities ===== */
+.hidden {
+  visibility: hidden;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+.htmx-indicator {
+  display: none;
+}
+
+.htmx-request .htmx-indicator,
+.htmx-request.htmx-indicator {
+  display: inline;
+}

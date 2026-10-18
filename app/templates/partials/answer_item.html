@@ -1,0 +1,12 @@
+<div class="answer-item" data-url="{{ answer.url }}"
+     data-start="{{ answer.start or '' }}"
+     data-stop="{{ answer.stop or '' }}">
+  <button class="answer-play-btn"
+          @click="play('{{ answer.url }}', {{ answer.start or 'null' }}, {{ answer.stop or 'null' }})">
+    ▶ Play
+  </button>
+  <span class="answer-submitter">submitted by {{ answer.submitter }}</span>
+  {% if answer.start %}
+    <span class="answer-timestamp">{{ answer.start }}s</span>
+  {% endif %}
+</div>

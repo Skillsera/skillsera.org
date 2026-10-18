@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Skillsera — A Universal Curriculum{% endblock %}
+
+{% block content %}
+<header>
+  <h1 class="logo">
+    <img src="/static/imgs/fox.png" alt="">Skillsera
+  </h1>
+  <h3>A community-powered encyclopedia which teaches educational concepts by connecting bite-sized YouTube video explanations.</h3>
+
+  <form action="/learn" method="get"
+        hx-get="/questions/search"
+        hx-trigger="keyup changed delay:300ms"
+        hx-target="#main-search-results"
+        hx-indicator="#main-spinner"
+        hx-include="[name='q']"
+        style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <input class="question-input" id="main-search" name="q" type="text"
+           placeholder="Start with a question, like: What is matter?"
+           autocomplete="off">
+    <div style="display:flex;gap:10px">
+      <button type="submit" class="button pcta">Search</button>
+      <a href="/about" class="button">How it Works</a>
+    </div>
+  </form>
+
+  <span id="main-spinner" class="htmx-indicator hidden">Searching...</span>
+  <div id="main-search-results" style="margin-top:1em"></div>
+</header>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Show search results container when results arrive
+  document.body.addEventListener('htmx:afterSwap', function(e) {
+    if (e.detail.target.id === 'main-search-results') {
+      e.detail.target.style.display = 'block';
+    }
+  });
+  // Focus the main search on load
+  document.getElementById('main-search').focus();
+</script>
+{% endblock %}
