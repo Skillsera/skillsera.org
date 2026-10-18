@@ -5,7 +5,9 @@
           @click="play('{{ answer.url }}', {{ answer.start or 'null' }}, {{ answer.stop or 'null' }})">
     ▶ Play
   </button>
-  <span class="answer-submitter">submitted by {{ answer.submitter }}</span>
+  {% if answer.user and answer.user.username %}
+  <span class="answer-submitter">submitted by {{ answer.user.username }}</span>
+  {% endif %}
   {% if answer.start %}
     <span class="answer-timestamp">{{ answer.start }}s</span>
   {% endif %}

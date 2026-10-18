@@ -1,27 +1,12 @@
 <div class="question-card" id="question-{{ question.id }}">
   <h2 class="question-title">{{ question.question }}</h2>
 
-  {% set answers = question.answers %}
-  {% if answers %}
+  {% set visible = question.answers | rejectattr('dark') | list %}
   <div class="answers-section">
     <h3>Video Answers</h3>
-    <div class="answers-list" id="answers-list-{{ question.id }}"
-         x-data="videoPlayer()">
-      {% for answer in answers %}
-        {% if not answer.dark %}
-        <div class="answer-item" data-url="{{ answer.url }}"
-             data-start="{{ answer.start or '' }}"
-             data-stop="{{ answer.stop or '' }}">
-          <button class="answer-play-btn"
-                  @click="play('{{ answer.url }}', {{ answer.start or 'null' }}, {{ answer.stop or 'null' }})">
-            ▶ Play
-          </button>
-          <span class="answer-submitter">submitted by {{ answer.submitter }}</span>
-          {% if answer.start %}
-            <span class="answer-timestamp">{{ answer.start }}s</span>
-          {% endif %}
-        </div>
-        {% endif %}
+    <div class="answers-list" id="answers-list-{{ question.id }}" x-data="videoPlayer()">
+      {% for answer in visible %}
+        {% include "partials/answer_item.html" %}
       {% endfor %}
 
       <div class="video-player-container" x-show="embedUrl" x-cloak>
@@ -31,10 +16,10 @@
         </iframe>
       </div>
     </div>
+    {% if not visible %}
+    <p class="no-answers">No video answers yet. Be the first to submit one!</p>
+    {% endif %}
   </div>
-  {% else %}
-  <p class="no-answers">No video answers yet. Be the first to submit one!</p>
-  {% endif %}
 
   {% include "partials/answer_form.html" %}
 

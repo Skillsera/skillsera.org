@@ -70,8 +70,14 @@
       if (el) el.style.display = el.innerHTML.trim() ? 'block' : 'none';
     }
     document.body.addEventListener('htmx:afterSwap', function (e) {
-      var id = e.detail.target && e.detail.target.id;
-      if (id === 'search-results' || id === 'main-search-results') toggle(e.detail.target);
+      var t = e.detail.target;
+      var id = t && t.id;
+      if (id === 'search-results' || id === 'main-search-results') toggle(t);
+      // first video answer just added -> drop the "no answers yet" note
+      if (id && id.indexOf('answers-list-') === 0) {
+        var note = t.parentElement && t.parentElement.querySelector('.no-answers');
+        if (note) note.remove();
+      }
     });
     // Clearing the nav search closes its dropdown.
     document.body.addEventListener('input', function (e) {
