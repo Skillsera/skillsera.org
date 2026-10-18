@@ -12,20 +12,25 @@
   <script src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
   <style>
     nav { position: relative; }
-    /* nav search-as-you-type dropdown */
+    /* search result containers (nav dropdown + home hero) */
+    #search-results, #main-search-results {
+      background: #fff; border: 1px solid #ddd; border-radius: 8px; text-align: left;
+    }
+    /* nav search-as-you-type dropdown: floats below the nav */
     #search-results {
       position: absolute; top: 100%; left: 0; right: 0; margin-top: 4px;
-      background: #fff; border: 1px solid #ddd; border-radius: 8px;
       box-shadow: 0 8px 24px rgba(0,0,0,.12);
       max-height: 60vh; overflow-y: auto; z-index: 1000;
     }
-    #search-results .search-results-list { list-style: none; margin: 0; padding: 4px; }
-    #search-results .search-results-list li a {
+    /* home hero results: a centered card below the search box */
+    #main-search-results { max-width: 600px; margin: 1em auto 0; overflow: hidden; }
+    .search-results-list { list-style: none; margin: 0; padding: 4px; }
+    .search-results-list li a {
       display: block; padding: 10px 14px; border-radius: 6px;
       text-decoration: none; color: inherit;
     }
-    #search-results .search-results-list li a:hover { background: #f2f2f2; }
-    #search-results .search-no-results { padding: 12px 14px; margin: 0; }
+    .search-results-list li a:hover { background: #f2f2f2; }
+    .search-no-results { padding: 12px 14px; margin: 0; }
   </style>
   {% block head %}{% endblock %}
 </head>

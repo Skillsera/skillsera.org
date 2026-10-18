@@ -2,12 +2,7 @@
 <ul class="search-results-list">
   {% for result in results %}
   <li>
-    <a href="/learn?id={{ result.id }}"
-       hx-get="/questions/{{ result.id }}"
-       hx-target="#question-container"
-       hx-push-url="/learn?id={{ result.id }}">
-      {{ result.question }}
-    </a>
+    <a href="/learn?id={{ result.id }}">{{ result.question }}</a>
   </li>
   {% endfor %}
 </ul>
